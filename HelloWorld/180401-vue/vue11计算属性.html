@@ -1,0 +1,45 @@
+<!DOCTYPE html> 
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Vue入门之htmlraw</title>
+  <script src="vue.min.js"></script>
+</head>
+<body>
+<!-- 在做数据的绑定的时候,数据要进行处理之后才能展示到html页面上，虽然vue提供了非常好的表达式绑定的方法，但是只能应对低强度的需求。比如： 把一个日期按照规定格式进行输出，可能就需要我们对日期对象做一些格式化的出来，表达式可能就捉襟见肘了。
+
+Vue对象提供的computed属性，可以让我们开发者在里面可以放置一些方法，协助我们绑定数据操作，这些方法可以跟data中的属性一样用，注意这些方法用的时候不要加()。 
+例子来了： -->
+  <div id="app">
+    <table>
+      <tr>
+        <!-- computed里面的函数可以直接当成data里面的属性用，非常方便，注意没有括号！！！-->
+        <td>生日</td><td>{{ getBirthday }}</td>
+      </tr>
+      <tr>
+        <td>年龄</td><td>{{ age }}</td>
+      </tr>      
+      <tr>
+        <td>地址</td><td>{{ address }}</td>
+      </tr>
+    </table>
+  </div>
+  <script>
+    var app = new Vue({         
+      el: '#app',               
+      data: {                   
+        birthday: 914228510514,     // 这是一个日期对象的值：1998年11月1日
+        age: 19,
+        address: '北京昌平区龙泽飞龙'
+      },
+      computed: {
+        // 把日期换成 常见规格格式的字符串。
+        getBirthday: function () {
+          var m = new Date(this.birthday);
+          return m.getFullYear() + '年' + m.getMonth() +'月'+ m.getDay()+'日';
+        }
+      }
+    });
+  </script>
+</body>
+</html>

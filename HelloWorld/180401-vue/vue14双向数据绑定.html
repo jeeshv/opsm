@@ -1,0 +1,27 @@
+<!DOCTYPE html> 
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Vue入门之htmlraw</title>
+  <script src="vue.min.js"></script>
+  <!--上面的例子我们大多讲的是单向的 js对象向 HTML数据进行绑定，那HTML怎样向js进行反馈数据呢？ 
+HTML中只有表达能接受用户的输入，最简单的演示双向绑定的就是文本框了。
+
+Vue提供了一个新的指令：v-model进行双向数据的绑定，注意不是v-bind -->
+</head>
+<body>
+  <div id="app">
+    <!-- v-model可以直接指向data中的属性，双向绑定就建立了 -->
+    <input type="text" name="txt" v-model="msg">
+    <p>您输入的信息是：{{ msg }}</p>
+  </div>
+  <script>
+    var app = new Vue({         
+      el: '#app',               
+      data: {                   
+        msg: '双向数据绑定的例子'
+      }
+    });
+  </script>
+</body>
+</html>

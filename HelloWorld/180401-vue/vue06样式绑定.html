@@ -1,0 +1,28 @@
+<!DOCTYPE html> 
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Vue入门之绑定样式类</title>
+  <script src="vue.min.js"></script>
+  <style>
+  .active {
+    background-color: #ccc;
+  }
+  </style>
+</head>
+<body>
+  <div id="app">
+    <div v-bind:id="MenuContaineId" v-bind:class="{ active: isActive }">绑定颜色类</div>
+  </div>
+  <script>
+  //经常我们需要对样式进行切换，比如：div的显示和隐藏，某些标签active等。Vue提供的对象绑定样式的方式就很容做这些事情。
+    var app = new Vue({         
+      el: '#app',               
+      data: {                   // data: 是Vue对象中绑定的数据
+        MenuContaineId: 'menu',
+        isActive: false  //true就显示，false就隐藏
+      }
+    });
+  </script>
+</body>
+</html>

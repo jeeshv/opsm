@@ -1,0 +1,25 @@
+<!DOCTYPE html> <!--第一步：创建文件夹及html文件-->
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Vue入门之Helloworld</title>
+  <!--第二步：引入Vue库-->
+  <script src="vue.min.js"></script>
+</head>
+<body>
+  <!--第三步:创建一个Div-->
+  <div id="app">
+  <div v-bind:id="MenuContaineId" v-html="MenuBody">
+  </div>
+</div>
+<script>
+  var app = new Vue({         
+    el: '#app',               
+    data: {                   // data: 是Vue对象中绑定的数据
+      MenuContaineId: 'menu',
+      MenuBody: '<p>这里是菜单的内容</p>'
+    }
+  });
+</script>
+</body>
+</html>

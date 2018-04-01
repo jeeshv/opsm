@@ -1,0 +1,32 @@
+<!DOCTYPE html> 
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Vue入门之绑定样式类</title>
+  <script src="vue.min.js"></script>
+  <style>
+  .active {
+    background-color: #ccc;
+  }
+  </style>
+</head>
+<body>
+  <div id="app">
+  <div class="static" v-bind:class="classObject">1</div>
+</div>
+<script>
+//直接在html属性中的双引号内写对象，还是很不爽，也没有智能提示，很容易写错。 
+//Vue可以让我们直接把绑定的class字符串指向data的一个对象，这样就非常方便了，既可以有智能提示，又可以很复杂进行编辑，不用担心烦人的""了。
+//由于v-bind 使用非常频繁，所以Vue提供了简单的写法，可以去掉v-bind直接使用:即可。
+  var app = new Vue({         
+    el: '#app',               
+    data: {
+      classObject: {
+        active: true,
+        'text-danger': false
+      }
+    }
+  });
+</script>
+</body>
+</html>
