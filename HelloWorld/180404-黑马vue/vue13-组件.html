@@ -1,0 +1,39 @@
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <script src="vue.min.js"></script>
+    <style>
+        .foo{
+            background-color: red;
+        }
+        .bar{
+            background-color: skyblue;
+        }
+    </style>
+</head>
+<body>
+    <div id="app">
+        <my-component class="baz boo">5</my-component>
+        <p is='my-component1' class="baz boo">6</p>
+    </div>
+
+    <script>
+        Vue.component('my-component', {
+            template: '<p class="bar">Hi</p>'
+        })
+        Vue.component('my-component1', {
+            template: '<p class="foo">world,is good</p>'
+        })
+        var app = new Vue({         // 创建Vue对象。Vue的核心对象。
+            el: '#app',               // el属性：把当前Vue对象挂载到 div标签上，#app是id选择器
+            data: {                   // data: 是Vue对象中绑定的数据
+
+            },
+            methods: {
+
+            }
+        });
+    </script>
+</body>
+</html>

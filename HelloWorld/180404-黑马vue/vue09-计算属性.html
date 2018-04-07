@@ -1,0 +1,52 @@
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <script src="vue.min.js"></script>
+    <style>
+
+    </style>
+</head>
+<body>
+    <div id="app">
+        <div id="example">
+            <p>Original message: "{{ message }}"</p>
+            <p>Computed reversed message: "{{ reversedMessage }}"</p>
+            <p>now: "{{ noww }}"</p>
+            <p>Reversed message: "{{ aa() }}"</p>
+            <p>get now: "{{ getNow() }}"</p>
+        </div>
+    </div>
+
+    <script>
+        var vm = new Vue({
+            el: '#example',
+            data: {
+                message: 'Hello'
+            },
+            methods:{
+                auto:function(){
+                    console.log("自动执行的方法??");
+                },
+                aa: function () {
+                    return this.message.split('').reverse().join('')
+                },
+                getNow:function(){
+                    return Date.now()
+                }
+            },
+            computed: {
+                // 计算属性的 getter
+                reversedMessage: function () {
+                    this.auto();
+                    // `this` 指向 vm 实例
+                    return this.message.split('').reverse().join('')
+                },
+                noww: function () {
+                    return Date.now()
+                }
+            }
+        })
+    </script>
+</body>
+</html>

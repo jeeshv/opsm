@@ -1,0 +1,30 @@
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <script src="vue.min.js"></script>
+    <style>
+
+    </style>
+</head>
+<body>
+    <div id="app">
+        <p>{{ foo }}</p>
+        <!-- 这里的 `foo` 不会更新！ -->
+        <button @click="foo = 'baz'">Change it</button>
+    </div>
+
+    <script>
+        var obj = {
+            foo: 'bar'
+        }
+
+        //Object.freeze(obj)  //会冻结双向绑定
+
+        new Vue({
+            el: '#app',
+            data: obj
+        })
+    </script>
+</body>
+</html>

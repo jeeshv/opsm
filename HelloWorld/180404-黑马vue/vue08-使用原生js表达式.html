@@ -1,0 +1,41 @@
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <script src="vue.min.js"></script>
+    <style>
+        #list-1{
+            background-color: red;
+        }
+        #list-2{
+            background-color: skyblue;
+        }
+    </style>
+</head>
+<body>
+    <div id="app">
+        <p>{{ number + 1 }}</p>
+
+        <p>{{ ok ? 'YES' : 'NO' }}</p>
+
+        <p>{{ message.split('').reverse().join('') }}</p>
+
+        <div v-bind:id="'list-' + id">6</div>
+    </div>
+
+    <script>
+        var app = new Vue({         // 创建Vue对象。Vue的核心对象。
+            el: '#app',               // el属性：把当前Vue对象挂载到 div标签上，#app是id选择器
+            data: {                   // data: 是Vue对象中绑定的数据
+                number:5,
+                ok:true,
+                message:'hello world!',
+                id:2
+            },
+            methods: {
+
+            }
+        });
+    </script>
+</body>
+</html>

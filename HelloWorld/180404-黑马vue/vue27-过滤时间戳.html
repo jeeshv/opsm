@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <script src="vue.min.js"></script>
+</head>
+<body>
+<div id="app">
+    <div>
+        {{ message | formatTime('YMD')}}
+    </div>
+    <div>
+        {{ message | formatTime('YMDHMS')}}
+    </div>
+    <div>
+        {{ message | formatTime('HMS')}}
+    </div>
+    <div>
+        {{ message | formatTime('YM')}}
+    </div>
+</div>
+<script>
+    //元素的补零计算
+    function addZero(val){
+        if(val < 10){
+            return "0" +val;
+        }else{
+            return val;
+        }
+    };
+
+
+    console.log(addZero(9))
+
+
+    //实现vue中的过滤器功能  先定义过滤器 在使用        value是过滤器前面的值，type是过滤器中定义的字段
+    Vue.filter("formatTime",function(value,type){
+        var dataTime="";
+        var data = new Date();
+        data.setTime(value);
+        var year   =  data.getFullYear();
+        var month  =  addZero(data.getMonth() + 1);
+        var day    =  addZero(data.getDate());
+        var hour   =  addZero(data.getHours());
+        var minute =  addZero(data.getMinutes());
+        var second =  addZero(data.getSeconds());
+        if(type == "YMD"){
+            dataTime =  year + "-"+ month + "-" + day;
+        }else if(type == "YMDHMS"){
+            dataTime = year + "-"+month + "-" + day + " " +hour+ ":"+minute+":" +second;
+        }else if(type == "HMS"){
+            dataTime = hour+":" + minute+":" + second;
+        }else if(type == "YM"){
+            dataTime = year + "-" + month;
+
+        }
+        return dataTime;//将格式化后的字符串输出到前端显示
+    });
+
+
+    var app = new Vue({
+        el: '#app',
+        data: {
+            message: '1501068985877'
+        }
+    });
+</script>
+</body>
+</html>

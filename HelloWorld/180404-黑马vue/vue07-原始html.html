@@ -1,0 +1,38 @@
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <script src="vue.min.js"></script>
+    <style>
+
+    </style>
+</head>
+<body>
+    <div id="app">
+        <p>Using mustaches: {{ rawHtml }}</p>
+        <p>Using v-html directive:</p>
+        <p>以下为绑定的内容</p>
+        <span v-html="rawHtml"></span>
+        <button v-bind:disabled="isButtonDisabled" @click="test">Button</button>
+    </div>
+
+    <script>
+        /**
+         * 你的站点上动态渲染的任意 HTML 可能会非常危险，因为它很容易导致 XSS 攻击。
+         * 请只对可信内容使用 HTML 插值，绝不要对用户提供的内容使用插值。
+         */
+        var app = new Vue({         // 创建Vue对象。Vue的核心对象。
+            el: '#app',               // el属性：把当前Vue对象挂载到 div标签上，#app是id选择器
+            data: {                   // data: 是Vue对象中绑定的数据
+                rawHtml:'<p>测试</p>',
+                isButtonDisabled:false, //控制按钮是否可以被点击
+            },
+            methods: {
+                test:function(){
+                    alert("可以点击")
+                }
+            }
+        });
+    </script>
+</body>
+</html>

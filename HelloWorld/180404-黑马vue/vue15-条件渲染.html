@@ -1,0 +1,73 @@
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <script src="vue.min.js"></script>
+    <style>
+
+    </style>
+</head>
+<body>
+    <div id="app">
+        <template v-if="ok">
+            <h1>Title</h1>
+            <p>Paragraph 1</p>
+            <p>Paragraph 2</p>
+        </template>
+        <div v-if="Math.random() > 0.5">
+            Now you see me
+        </div>
+        <div v-else>
+            Now you don't
+        </div>
+
+
+        <div v-if="type === 'A'">
+            A
+        </div>
+        <div v-else-if="type === 'B'">
+            B
+        </div>
+        <div v-else-if="type === 'C'">
+            C
+        </div>
+        <div v-else>
+            Not A/B/C
+        </div>
+
+        <template v-if="loginType === 'username'">
+            <label>Username</label>
+            <input placeholder="Enter your username">
+        </template>
+        <template v-else>
+            <label>Email</label>
+            <input placeholder="Enter your email address">
+        </template>
+
+        <button @click="turn">切换显示隐藏</button>
+    </div>
+
+    <script>
+
+        var app = new Vue({         // 创建Vue对象。Vue的核心对象。
+            el: '#app',               // el属性：把当前Vue对象挂载到 div标签上，#app是id选择器
+            data: {                   // data: 是Vue对象中绑定的数据
+                ok:true,
+                type:'C',
+                loginType:'username'
+            },
+            methods: {
+                turn: function () {
+                    if(this.ok == true){
+                        this.ok = false;
+                        this.loginType='username'
+                    }else{
+                        this.loginType='address';
+                        this.ok = true;
+                    }
+                }
+            }
+        });
+    </script>
+</body>
+</html>
